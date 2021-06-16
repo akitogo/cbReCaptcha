@@ -1,5 +1,5 @@
 # cbReCaptcha
-Implements Google reCaptcha for Contentbox 3.x
+Implements Google reCaptcha for Contentbox 3.x and 4.x
 
 ## Installation
 - register your site at https://www.google.com/recaptcha/intro/index.html

@@ -13,6 +13,8 @@ Implements Google reCaptcha for Contentbox 3.x
 - caching for settings
 
 ## Version
+1.2.0 optional activation if focus is on specific input field id. Improves page loading time.
+
 1.1.2 fix for settings bug
 
 1.1.1 fix for Contentbox 3.7.1

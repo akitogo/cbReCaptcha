@@ -85,6 +85,46 @@ component singleton accessors="true"{
 	 * Return the HTML for the reCaptcha form
 	 */
 	function renderForm(){
+		var allSettings = getAllSettings();
+		
+		if( structKeyExists( allSettings, 'activateForIds' ) && allSettings.activateForIds != ''  ){
+			savecontent variable="local.outputForm"{
+				writeOutput( "
+					<script>
+						function sendForm() {
+							document.getElementById('contactForm').submit();
+						}
+					
+						// Function that loads recaptcha on form input focus
+						function reCaptchaOnFocus() {
+							var head = document.getElementsByTagName('head')[0]
+							var script = document.createElement('script')
+							script.type = 'text/javascript';
+							script.src = 'https://www.google.com/recaptcha/api.js'
+							head.appendChild(script);
+				");
+				// remove focus to avoid js error:
+				for (var elementId in listToArray(allSettings.activateForIds) ){
+					writeOutput( "document.getElementById('#elementId#').removeEventListener('focus', reCaptchaOnFocus); ");
+				}
+				writeOutput( "}; "); // end JS reCaptchaOnFocus
+
+						
+				// add initial event listener to the form inputs
+				for (var elementId in listToArray(allSettings.activateForIds) ){
+					writeOutput( "document.getElementById('#elementId#').addEventListener('focus', reCaptchaOnFocus, false); ");
+				}						
+				writeOutput( "</script> "); // end JS reCaptchaOnFocus
+				writeOutput( "
+					<div class=""form-group"">
+						<div class=""g-recaptcha"" data-sitekey=""#getPublicKey()#""></div>
+					</div>
+				" );			
+			}	
+					
+				return local.outputForm;
+		}
+
 		savecontent variable="local.outputForm"{
 			writeOutput( "
 			<script src='https://www.google.com/recaptcha/api.js'></script>

@@ -11,7 +11,7 @@ component hint="My Module Configuration"{
 	this.author 			= "Aktigo Internet and Media Applications GmbH";
 	this.webURL 			= "http://www.akitogo.com";
 	this.description 		= "Implements Google reCaptcha for Contentbox 3.x and 4.x";
-	this.version			= "1.1.2";
+	this.version			= "1.2.0";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup 	= true;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
@@ -28,7 +28,10 @@ component hint="My Module Configuration"{
 
 		// module settings - stored in modules.name.settings
 		settings = {
-			apiUrl='https://www.google.com/recaptcha/api/siteverify'
+			apiUrl				= 'https://www.google.com/recaptcha/api/siteverify'
+			, publickey 		= ''
+			, privatekey 		= ''
+			, activateForIds 	= ''
 		};
 
 		// Layout Settings

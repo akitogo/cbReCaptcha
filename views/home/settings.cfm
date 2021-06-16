@@ -18,7 +18,7 @@
                 <div class="alert alert-info">
                     Please enter your reCaptcha credentials in the form below. You can retrieve your credentials from the <a href="https://www.google.com/recaptcha/admin">reCaptcha admin panel</a>.
                 </div>
-
+               
                 #html.startForm(
                     name="commentSettingsForm", 
                     action=prc.xehSave, 
@@ -44,7 +44,19 @@
                         labelClass="control-label",
                         groupWrapper="div class=form-group"
                     )#  
-        
+                    #html.textField(
+                        name="activateForIds",
+                        label="Active Repcatcha only if form field input id is on focus (optional). Enter comma separated without space.",
+                        value=event.getValue('activateForIds',''),
+                        class="form-control",
+                        size="60",
+                        wrapper="div class=controls",
+                        labelClass="control-label",
+                        groupWrapper="div class=form-group"
+                    )#
+                    <div class="alert alert-info">
+                        For activation on input field ids <a href="https://dev.to/uf4no/improve-page-performance-lazy-loading-recaptcha-442o">see here</a>.
+                    </div>                       
                     <!--- End Tab Content --->
                     <div class="form-actions">
                         #html.button(type="submit", value="Save Settings", class="btn btn-danger" )#

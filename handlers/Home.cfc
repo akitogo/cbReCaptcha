@@ -19,7 +19,8 @@ component{
 		prc.xehSave = cb.buildModuleLink( "cbReCaptcha", "home.saveSettings" );
 
 		event.paramValue( "privatekey", "" )
-			.paramValue( "publickey", "" );
+			.paramValue( "publickey", "" )
+			.paramValue( "activateForIds", "" );
 
 		var allsettings = settingService.findWhere( criteria={ name="cbReCaptcha" } );
 
@@ -42,7 +43,7 @@ component{
 	 */
 	function saveSettings( event, rc, prc ){
 		// Get compressor settings
-		prc.settings = { publickey = '', privatekey = '' };
+		prc.settings = { publickey = '', privatekey = '', activateForIds = '' };
 
 		// iterate over settings
 		for( var key in prc.settings ){

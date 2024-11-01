@@ -5,7 +5,7 @@
 component{
 
 	// DI
-	property name="settingService" 	inject="settingService@cb";
+	property name="settingService" 	inject="settingService@contentbox";
 	property name="cb" 				inject="cbHelper@cb";
 
 	/**

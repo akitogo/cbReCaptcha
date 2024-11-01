@@ -10,8 +10,8 @@ component hint="My Module Configuration"{
 	this.title 				= "cbReCaptcha";
 	this.author 			= "Aktigo Internet and Media Applications GmbH";
 	this.webURL 			= "http://www.akitogo.com";
-	this.description 		= "Implements Google reCaptcha for Contentbox 3.x and 4.x";
-	this.version			= "1.2.0";
+	this.description 		= "Implements Google reCaptcha for Contentbox 6";
+	this.version			= "1.3.0";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup 	= true;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
@@ -19,6 +19,9 @@ component hint="My Module Configuration"{
 	// Module Entry Point
 	this.entryPoint			= "cbReCaptcha";
 
+	this.dependencies 		= [
+		'contentbox'
+	];
 	function configure(){
 
 		// parent settings
@@ -88,7 +91,7 @@ component hint="My Module Configuration"{
 	* Fired when the module is activated by ContentBox
 	*/
 	function onActivate(){
-		var settingService = controller.getWireBox().getInstance( "SettingService@cb" );
+		var settingService = controller.getWireBox().getInstance( "settingService@contentbox" );
 		
 		// store default settings
 		var oSetting = settingService.findWhere(
@@ -123,7 +126,7 @@ component hint="My Module Configuration"{
 	* Fired when the module is deactivated by ContentBox
 	*/
 	function onDeactivate(){
-		var settingService = controller.getWireBox().getInstance( "SettingService@cb" );
+		var settingService = controller.getWireBox().getInstance( "settingService@contentbox" );
 		var oSetting = settingService.findWhere( criteria={ name="cbReCaptcha"} );
 		if( !isNull( oSetting ) ){
 			settingService.delete( oSetting );

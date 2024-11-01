@@ -5,7 +5,7 @@ component singleton accessors="true"{
 
 	// DI
 	property name="config"			inject="coldbox:modulesettings:cbRecaptcha";
-	property name="settingService" 	inject="settingService@cb";
+	property name="settingService" 	inject="settingService@contentbox";
 
 	/**
 	* Google Private Key
